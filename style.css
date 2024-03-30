@@ -1,0 +1,18 @@
+body
+{
+    background-color: aliceblue;
+}
+#score 
+{
+  font-size: 20px; 
+  margin-right: 600px; 
+}
+#timer
+{
+  font-size: 20px; 
+  margin-left: 600px;
+}
+#sketch_to_be_drawn
+{
+    color:darkblue;
+}
