@@ -18,15 +18,21 @@ function setup(){
     canvas = createCanvas(280,280);
     canvas.center();
     background("white");
+    canvas.mouseReleased(classifyCanvas);
+    synth = window.speechSynthesis;
 }
+function preload(){
+    classfier = ml5.imageClassifier('DoodleNet');
+}
+
 function draw(){
-    check_sketch();
-    if (sketch == drawn_sketch) {
-        answer_holder = "set";
-        score++;
-        document.getElementById("score").innerHTML=("Score: ")+(score);
-    };  
+    strokeWeight(13);
+    stroke(0);
+    if (mouseIsPressed){
+        line(pmouseX, pmouseY, mouseX, mouseY);
+    }
 }
+
 function check_sketch(){
     timer_count++;
     document.getElementById("timer").innerHTML=("Timer: ")+(timer_count);
@@ -41,4 +47,8 @@ function check_sketch(){
         answer_holder = ""
         updateCanvas()
     }
+}
+
+function classifyCanvas(){
+    classfier.classify(canvas, gotResult);
 }
